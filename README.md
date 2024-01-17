@@ -32,8 +32,10 @@ How to initialize/run your application (where applicable)
 
 <!-- the initialize is not working. spoke with JB and he said we'll go over it in class on 1/17 -->
 python game_logic.py
+python -m ten_thousand.game_logic
 
 ## Tests
 
-How do you run tests? python -m pytest  
+How do you run tests? 
+python -m pytest  
 
