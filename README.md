@@ -9,7 +9,7 @@ Collaboration: Xien Deng
 
 ## Links and Resources
 
-## Key Features
+## Features Tasks
 
 - Define a GameLogic class in ten_thousand/game_logic.py file.
 - Handle calculating score for dice roll
@@ -21,7 +21,17 @@ Collaboration: Xien Deng
 - The input to roll_dice is an integer between 1 and 6.
 - The output of roll_dice is a tuple with random values between 1 and 6.
 - The length of tuple must match the argument given to roll_dice method.
-completed 01/16/2024 0730EST
+
+completed 01-16-2024 0730EST
+
+- Welcome message
+- Option to play
+- Keep dice or quit option
+
+completes 01-16-2024 0900EST
+
+
+completed 9:00EST
 
 ## Setup
 
