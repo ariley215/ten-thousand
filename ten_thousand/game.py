@@ -30,10 +30,19 @@ def display_dice(dice_results):
 
 def user_input_for_keep():
     """
-    Prompt the user to enter dice to keep or quit.
+    Prompt the user to enter dice to keep, or quit.
     """
     print("Enter dice to keep, or (q)uit:")
     return input("> ").lower()
+  
+def handle_dice_to_keep(user_input):
+    """
+    Handle the user input for dice to keep.
+    """
+    # Split the input string by character and convert to integers
+    dice_to_keep = [int(char) for char in user_input if char.isdigit()]
+
+    return dice_to_keep
 
 def end_game(score):
     """
@@ -41,30 +50,49 @@ def end_game(score):
     """
     print(f"Thanks for playing. You earned {score} points")
 
-def play_round(round_number, roller=None):
+def set_aside_dice(dice_results, dice_to_keep):
+    """
+    Set aside the dice with the specified values.
+    """
+    set_aside = [die for die in dice_results if die in dice_to_keep]
+    remaining_dice = [die for die in dice_results if die not in dice_to_keep]
+    return set_aside, remaining_dice
+
+def play_round(round_number, total_score):
     """
     Play a round of the game.
     """
     start_round(round_number)
     
-    print("Rolling 6 dice...")
+    print(f"Rolling 6 dice... Total Score: {total_score}")
     current_dice = roll_dice(6)
     display_dice(current_dice)
     
     user_input = user_input_for_keep()
 
     if user_input == 'q':
-        end_game(0)
-        return [], []  # Return empty lists when the user quits
+        end_game(total_score)
+        sys.exit()
     else:
-        set_aside, remaining_dice = set_aside_dice(current_dice, user_input)
+        dice_to_keep = handle_dice_to_keep(user_input)
+        set_aside, remaining_dice = set_aside_dice(current_dice, dice_to_keep)
         
-        print("Set Aside:", set_aside)
-        print("Remaining Dice:", remaining_dice)
-        
-        return set_aside, remaining_dice  # Return the values for further use
+        print(f"You have {total_score} unbanked points and {len(remaining_dice)} dice remaining")
+        action = input("(r)oll again, (b)ank your points or (q)uit:\n> ").lower()
 
-def play_game():
+        if action == 'r':
+            return remaining_dice, total_score
+        elif action == 'b':
+            round_score = GameLogic.calculate_score(set_aside)
+            total_score += round_score
+            print(f"You banked {round_score} points in round {round_number}")
+            print(f"Total score is {total_score} points")
+            return roll_dice(6), total_score
+        elif action == 'q':
+            end_game(total_score)
+            sys.exit()
+
+def play():
     """
     Play the entire game, including multiple rounds.
     """
@@ -78,18 +106,18 @@ def play_game():
         total_score = 0
 
         while True:
-            set_aside, remaining_dice = play_round(round_number)
-            total_score += len(set_aside)  # Adjust this based on your scoring logic
+            remaining_dice, total_score = play_round(round_number, total_score)
             
-            # Check if the game continues to the next round or ends
             if not remaining_dice:
                 end_game(total_score)
-                break
+                sys.exit()
 
             round_number += 1
 
 if __name__ == '__main__':
-    play_game()
+    play()
+
+
 
     # rolls = [
     #     [],  # Customize this list to control the outcome of rolls
