@@ -30,10 +30,12 @@ Collaboration: Xien Deng
 
 *completed 01-17-2024 0900EST*
 
-- Application should keep track of current round *implemented not fully functional*
-- Application should allow user to set aside dice each roll *implemented-not fully functional*
-- Application should allow “banking” current score or rolling again. *implemented-not fully functional*
-- Application should keep track of total score *implemented-not fully functional*
+- Application should keep track of current round 
+- Application should allow user to set aside dice each roll.
+- Application should allow “banking” current score or rolling again.
+- Application should keep track of total score.
+
+*completed 01-19-2024 0415EST*
 
 ## Setup
 
