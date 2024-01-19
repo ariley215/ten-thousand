@@ -22,16 +22,18 @@ Collaboration: Xien Deng
 - The output of roll_dice is a tuple with random values between 1 and 6.
 - The length of tuple must match the argument given to roll_dice method.
 
-completed 01-16-2024 0730EST
+*completed 01-16-2024 0730EST*
 
 - Welcome message
 - Option to play
 - Keep dice or quit option
 
-completes 01-16-2024 0900EST
+*completed 01-17-2024 0900EST*
 
-
-completed 9:00EST
+- Application should keep track of current round *implemented not fully functional*
+- Application should allow user to set aside dice each roll *implemented-not fully functional*
+- Application should allow “banking” current score or rolling again. *implemented-not fully functional*
+- Application should keep track of total score *implemented-not fully functional*
 
 ## Setup
 
@@ -40,12 +42,11 @@ venv
 
 How to initialize/run your application (where applicable)
 
-<!-- the initialize is not working. spoke with JB and he said we'll go over it in class on 1/17 -->
-python game_logic.py
+
 python -m ten_thousand.game_logic
 
 ## Tests
 
-How do you run tests? 
+How do you run tests?
 python -m pytest  
 
