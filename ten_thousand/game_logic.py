@@ -25,8 +25,8 @@ class GameLogic:
         # Check for additional specific conditions and update the score
         score += GameLogic.check_specific_conditions(counts, dice_roll)
 
-        # Print the current score after applying all rules
-        print("Current score after final:", score)
+       
+      
 
         return score
 
