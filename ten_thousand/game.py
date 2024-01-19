@@ -64,7 +64,7 @@ def play_round(round_number, total_score):
     """
     start_round(round_number)
     
-    print(f"Rolling 6 dice... Total Score: {total_score}")
+    print("Rolling 6 dice...")
     current_dice = roll_dice(6)
     display_dice(current_dice)
     
@@ -75,13 +75,14 @@ def play_round(round_number, total_score):
         sys.exit()
     else:
         dice_to_keep = handle_dice_to_keep(user_input)
+        unbanked_points= GameLogic.calculate_score(dice_to_keep)
         set_aside, remaining_dice = set_aside_dice(current_dice, dice_to_keep)
         
-        print(f"You have {total_score} unbanked points and {len(remaining_dice)} dice remaining")
+        print(f"You have {unbanked_points} unbanked points and {len(remaining_dice)} dice remaining")
         action = input("(r)oll again, (b)ank your points or (q)uit:\n> ").lower()
 
         if action == 'r':
-            return remaining_dice, total_score
+            return roll_dice(remaining_dice)
         elif action == 'b':
             round_score = GameLogic.calculate_score(set_aside)
             total_score += round_score
